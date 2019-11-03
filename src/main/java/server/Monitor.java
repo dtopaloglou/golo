@@ -11,15 +11,15 @@ import java.util.TimerTask;
 public class Monitor extends TimerTask {
 
     private String url;
+
     private String status;
+
     private Date startTime;
+
     private Date endTime;
 
-
     public Monitor (String url){
-
         this.url = url;
-
     }
 
     public String getUrl(){
@@ -29,6 +29,7 @@ public class Monitor extends TimerTask {
 
     private void check() {
         try {
+            // check api
             URL check_url = new URL(url);
             HttpURLConnection con = (HttpURLConnection) check_url.openConnection();
             con.setRequestMethod("GET");
@@ -57,7 +58,7 @@ public class Monitor extends TimerTask {
         if(startTime == null){
             startTime = new Date();
         }
-        System.out.println("Checking...");
+
         check();
 
     }
